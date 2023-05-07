@@ -1,6 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  export let inputs: string;
+  export let inputText: string;
 
   const dispatch = createEventDispatcher();
 
@@ -10,21 +10,41 @@
   function deobfuscate() {
     isLoading = true;
     isSuccess = false;
-    setTimeout(() => {
-      const invis = "\u034F";
-      const modifiedData = inputs.replace(new RegExp(invis, 'g'), '');
+      const deobfuscateAsync = async () => {
+      try {
+        const response = await fetch(
+          // "https://obfuscate-kuzz4.ondigitalocean.app/tc-obfuscate/deobfuscate", // Update the URL with your server URL
+          "http://localhost:4000/deobfuscate",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              inputs: inputText,
+            }),
+          }
+        );
 
-      inputs = modifiedData;
+        if (!response.ok) {
+          throw new Error("Request failed");
+        }
 
-      dispatch("success", modifiedData);
+        const data = await response.json();
+        const responseData = data.modifiedData;
 
-      isLoading = false;
-      isSuccess = true;
+        dispatch("success", responseData);
+      } catch (error) {
+        console.error(error);
+      }
 
       setTimeout(() => {
-        isSuccess = false;
-      }, 3000);
-    }, 2000);
+        isSuccess = true;
+        isLoading = false;
+      }, 5000);
+    };
+      
+    setTimeout(deobfuscateAsync, 2000);
   }
 </script>
 

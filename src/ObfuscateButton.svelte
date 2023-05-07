@@ -1,72 +1,57 @@
-<script lang="ts">  
+<script lang="ts">
   import { createEventDispatcher } from "svelte";
-  const axios = require('axios');
+  export let inputText: string;
+
   const dispatch = createEventDispatcher();
 
- 
-  export let inputs: string;
   let isLoading = false;
   let isSuccessful = false;
 
-  function obfuscate() {
+  async function obfuscate() {
     isSuccessful = false;
     isLoading = true;
-    setTimeout(() => {
-      // const invis = "\u034F";
-      // const commonLetterPairs = ["th", "he", "in", "er", "an", "re", "on", "at", "en", "nd", "ti", "es", "or", "te", "of", "ed", "is", "it", "al", "ar", "st", "to", "nt", "ng", "se", "ha", "as", "ou", "io", "le", "ve", "co", "me", "de", "hi", "ri", "ro", "ic", "ne", "ea", "ra", "ce", "li", "ch", "ll", "be", "ma", "si", "om", "ur"];
-      // const punctuations = ['.', ',', ';', ':', '!', '?'];
-      
-      // var modifiedData = "";
-      // var currentIndex = 0;
-      
-      // while (currentIndex < inputText.length) {
-      //   var currentChar = inputText[currentIndex];
-      //   var nextChar = inputText[currentIndex + 1];
-      
-      //   if (commonLetterPairs.includes(currentChar + nextChar) && Math.random() < 0.04) {
-      //     modifiedData += currentChar + nextChar;
-      //     modifiedData += invis;
-      //     currentIndex += 2;
-      //   } else {
-      //     modifiedData += currentChar;
-          
-      //     if (currentChar === ' ' && Math.random() < 0.04) {
-      //       modifiedData += invis;
-      //     } else if (punctuations.includes(currentChar) && Math.random() < 0.04) {
-      //       modifiedData += invis;
-      //     }
-      
-      //     currentIndex++;
-      //   }
-      // }
-      
-      // inputText = modifiedData;
-      axios.post('https://obfuscate-kuzz4.ondigitalocean.app/', {inputText: inputs})
-      .then((response: { data: any; }) => {
-        const data = response.data; // Retrieve the response data
-        dispatch("success", data);
-        setTimeout(() => {
-        isSuccessful = false;
-      }, 7000);
-      })
-      .catch((error: any) => {
-        console.error(error); // Handle any errors
-      });
 
-      isSuccessful = true;
-      isLoading = false;
+    const obfuscateAsync = async () => {
+      try {
+        const response = await fetch(
+          "https://obfuscate-kuzz4.ondigitalocean.app/tc-obfuscate/obfuscate", // Update the URL with your server URL
+          // "http://localhost:3000/obfuscate",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              inputs: inputText,
+            }),
+          }
+        );
 
-    }, 2000); 
+        if (!response.ok) {
+          throw new Error("Request failed");
+        }
+
+        const data = await response.json();
+        const responseData = data.modifiedData;
+
+        dispatch("success", responseData);
+      } catch (error) {
+        console.error(error);
+      }
+
+      setTimeout(() => {
+        isSuccessful = true;
+        isLoading = false;
+      }, 5000);
+    };
+
+    setTimeout(obfuscateAsync, 2000);
   }
 </script>
 
-<button
-  id="obfuscate"
-  on:click={obfuscate}
-  class="button obfuscate-button"
->
+<button id="obfuscate" on:click={obfuscate} class="button obfuscate-button">
   {#if isLoading}
-    <div class="loader"></div>
+    <div class="loader" />
   {:else if isSuccessful}
     Success!
   {:else}
@@ -83,8 +68,8 @@
     border: 5px solid #1e1e1e;
     border-top: 5px solid #58c384;
     border-radius: 50%;
-    width: .6rem;
-    height: .6rem;
+    width: 0.6rem;
+    height: 0.6rem;
     animation: spin 1s linear infinite;
     display: inline-block;
     vertical-align: middle;

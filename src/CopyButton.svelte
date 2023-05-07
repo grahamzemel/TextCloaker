@@ -1,11 +1,11 @@
 <script lang="ts">  
-    export let inputs: string;
+    export let inputText: string;
     let isCopied = false;
   
     function copyToClipboard() {
-      navigator.clipboard.writeText(inputs);
+      navigator.clipboard.writeText(inputText);
       isCopied = true;
-
+  
       setTimeout(() => {
         isCopied = false;
       }, 3000);
