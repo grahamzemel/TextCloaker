@@ -1,0 +1,40 @@
+{
+    "compilerOptions": {
+        "module": "ESNext",
+        "sourceMap": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strictBindCallApply": true,
+        "strictPropertyInitialization": true,
+        "noImplicitThis": true,
+        "alwaysStrict": true,
+        "noUnusedLocals": true,
+
+        "target": "ES2019",
+        "lib": ["ES2019", "DOM"],
+        "moduleResolution": "Node",
+        "allowJs": false,
+        "checkJs": false,
+        "declaration": false,
+
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "skipLibCheck": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "downlevelIteration": true,
+        "importHelpers": true,
+
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"]
+        }
+
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
