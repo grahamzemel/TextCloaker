@@ -1,6 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  export let inputText: string;
+  export let inputs: string;
 
   const dispatch = createEventDispatcher();
 
@@ -12,9 +12,9 @@
     isSuccess = false;
     setTimeout(() => {
       const invis = "\u034F";
-      const modifiedData = inputText.replace(new RegExp(invis, 'g'), '');
+      const modifiedData = inputs.replace(new RegExp(invis, 'g'), '');
 
-      inputText = modifiedData;
+      inputs = modifiedData;
 
       dispatch("success", modifiedData);
 

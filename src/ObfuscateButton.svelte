@@ -1,10 +1,10 @@
 <script lang="ts">  
   import { createEventDispatcher } from "svelte";
-
+  const axios = require('axios');
   const dispatch = createEventDispatcher();
 
  
-  export let inputText: string;
+  export let inputs: string;
   let isLoading = false;
   let isSuccessful = false;
 
@@ -12,43 +12,50 @@
     isSuccessful = false;
     isLoading = true;
     setTimeout(() => {
-      const invis = "\u034F";
-      const commonLetterPairs = ["th", "he", "in", "er", "an", "re", "on", "at", "en", "nd", "ti", "es", "or", "te", "of", "ed", "is", "it", "al", "ar", "st", "to", "nt", "ng", "se", "ha", "as", "ou", "io", "le", "ve", "co", "me", "de", "hi", "ri", "ro", "ic", "ne", "ea", "ra", "ce", "li", "ch", "ll", "be", "ma", "si", "om", "ur"];
-      const punctuations = ['.', ',', ';', ':', '!', '?'];
+      // const invis = "\u034F";
+      // const commonLetterPairs = ["th", "he", "in", "er", "an", "re", "on", "at", "en", "nd", "ti", "es", "or", "te", "of", "ed", "is", "it", "al", "ar", "st", "to", "nt", "ng", "se", "ha", "as", "ou", "io", "le", "ve", "co", "me", "de", "hi", "ri", "ro", "ic", "ne", "ea", "ra", "ce", "li", "ch", "ll", "be", "ma", "si", "om", "ur"];
+      // const punctuations = ['.', ',', ';', ':', '!', '?'];
       
-      var modifiedData = "";
-      var currentIndex = 0;
+      // var modifiedData = "";
+      // var currentIndex = 0;
       
-      while (currentIndex < inputText.length) {
-        var currentChar = inputText[currentIndex];
-        var nextChar = inputText[currentIndex + 1];
+      // while (currentIndex < inputText.length) {
+      //   var currentChar = inputText[currentIndex];
+      //   var nextChar = inputText[currentIndex + 1];
       
-        if (commonLetterPairs.includes(currentChar + nextChar) && Math.random() < 0.04) {
-          modifiedData += currentChar + nextChar;
-          modifiedData += invis;
-          currentIndex += 2;
-        } else {
-          modifiedData += currentChar;
+      //   if (commonLetterPairs.includes(currentChar + nextChar) && Math.random() < 0.04) {
+      //     modifiedData += currentChar + nextChar;
+      //     modifiedData += invis;
+      //     currentIndex += 2;
+      //   } else {
+      //     modifiedData += currentChar;
           
-          if (currentChar === ' ' && Math.random() < 0.04) {
-            modifiedData += invis;
-          } else if (punctuations.includes(currentChar) && Math.random() < 0.04) {
-            modifiedData += invis;
-          }
+      //     if (currentChar === ' ' && Math.random() < 0.04) {
+      //       modifiedData += invis;
+      //     } else if (punctuations.includes(currentChar) && Math.random() < 0.04) {
+      //       modifiedData += invis;
+      //     }
       
-          currentIndex++;
-        }
-      }
+      //     currentIndex++;
+      //   }
+      // }
       
-      inputText = modifiedData;
-      dispatch("success", modifiedData);
+      // inputText = modifiedData;
+      axios.post('https://obfuscate-kuzz4.ondigitalocean.app/', {inputText: inputs})
+      .then((response: { data: any; }) => {
+        const data = response.data; // Retrieve the response data
+        dispatch("success", data);
+        setTimeout(() => {
+        isSuccessful = false;
+      }, 7000);
+      })
+      .catch((error: any) => {
+        console.error(error); // Handle any errors
+      });
 
       isSuccessful = true;
       isLoading = false;
 
-      setTimeout(() => {
-        isSuccessful = false;
-      }, 7000);
     }, 2000); 
   }
 </script>

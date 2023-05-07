@@ -4,14 +4,14 @@
 	import DeobfuscateButton from "./DeobfuscateButton.svelte";
 	import CopyButton from "./CopyButton.svelte";
 
-	let inputText: string = "";  
+	let inputs: string = "";  
   
 	function handleObfuscate(event) {
-    inputText = event.detail;
+    inputs = event.detail;
   }
 
   function handleDeobfuscate(event) {
-    inputText = event.detail;
+    inputs = event.detail;
   }
   </script>
   
@@ -27,12 +27,12 @@
 	  <div class="border-bottom"></div>
   
 	  <div class="input-container">
-	  <textarea class="input-textarea" bind:value={inputText} placeholder="Enter your text..."></textarea>
+	  <textarea class="input-textarea" bind:value={inputs} placeholder="Enter your text..."></textarea>
 	</div>
-	  <ObfuscateButton {inputText} on:success={handleObfuscate} />
-	  <DeobfuscateButton {inputText} on:success={handleDeobfuscate} />
+	  <ObfuscateButton {inputs} on:success={handleObfuscate} />
+	  <DeobfuscateButton {inputs} on:success={handleDeobfuscate} />
   
-	  <CopyButton {inputText} />
+	  <CopyButton {inputs} />
 
 	  <p class="note">
 		Note: Your text should not look any different after you cloak/uncloak it.
