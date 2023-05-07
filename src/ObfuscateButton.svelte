@@ -43,15 +43,13 @@
       inputText = modifiedData;
       dispatch("success", modifiedData);
 
-      // Set isSuccessful to true to show the success message
       isSuccessful = true;
       isLoading = false;
 
-      // Remove the success message after 5 seconds
       setTimeout(() => {
         isSuccessful = false;
       }, 7000);
-    }, 2000); // Adjust the delay as needed
+    }, 2000); 
   }
 </script>
 

@@ -5,8 +5,7 @@
     function copyToClipboard() {
       navigator.clipboard.writeText(inputText);
       isCopied = true;
-  
-      // Reset the copy status after 3 seconds
+      
       setTimeout(() => {
         isCopied = false;
       }, 3000);
@@ -26,7 +25,7 @@
       padding: 1.5rem 3rem;
       font-size: 1.2rem;
       font-weight: bold;
-      background-color: #3b82f6; /* Blue color from Tailwind CSS */
+      background-color: #3b82f6; 
       color: #ffffff;
       border: none;
       border-radius: 5px;

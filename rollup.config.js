@@ -8,7 +8,6 @@ import typescript from '@rollup/plugin-typescript';
 import postcssPlugin from 'rollup-plugin-postcss';
 const postcssConfig = require('./postcss.config.cjs');
 
-// Add this import statement
 import serve from 'rollup-plugin-serve';
 
 const production = !process.env.ROLLUP_WATCH;

@@ -52,7 +52,7 @@ html, body {
   
   .input-textarea {
     width: 100%;
-    height: 200px; /* Adjust the height as per your preference */
+    height: 200px;
     border: 1px solid #ccc;
     border-radius: 5px;
     resize: vertical;
@@ -81,17 +81,17 @@ html, body {
   }
   
   .helpful-tips {
-	list-style-type: disc; /* Updated list style */
+	list-style-type: disc; 
 	margin-left: 2rem;
 	text-align: left;
 	font-size: .8rem;
-	color: #ffffff; /* Updated text color */
-	padding-left: 1rem; /* Added padding to the list items */
+	color: #ffffff; 
+	padding-left: 1rem; 
   }
   
   .helpful-tips li {
 	color: #adadad;
-	margin-bottom: 0.5rem; /* Adjusted spacing between list items */
+	margin-bottom: 0.5rem; 
   }
   a {
 	color: #5cc789;

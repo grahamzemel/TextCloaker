@@ -10,7 +10,6 @@
   function deobfuscate() {
     isLoading = true;
     isSuccess = false;
-    // Simulate the deobfuscation process
     setTimeout(() => {
       const invis = "\u034F";
       const modifiedData = inputText.replace(new RegExp(invis, 'g'), '');
@@ -22,7 +21,6 @@
       isLoading = false;
       isSuccess = true;
 
-      // Reset the success status after 3 seconds
       setTimeout(() => {
         isSuccess = false;
       }, 3000);
