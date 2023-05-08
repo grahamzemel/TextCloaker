@@ -1,5 +1,8 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
+  import { deob } from "./config.js";
+
+
   export let inputText: string;
 
   const dispatch = createEventDispatcher();
@@ -14,8 +17,7 @@
     const deobfuscateAsync = async () => {
       try {
         const response = await fetch(
-          "https://obfuscate-kuzz4.ondigitalocean.app/tc-obfuscate/deobfuscate", 
-          // "http://localhost:4000/deobfuscate",
+          deob,
           {
             method: "POST",
             headers: {

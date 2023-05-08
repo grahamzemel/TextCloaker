@@ -6,6 +6,7 @@ import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import postcssPlugin from 'rollup-plugin-postcss';
+import rollupJson from '@rollup/plugin-json';
 const postcssConfig = require('./postcss.config.cjs');
 
 import serve from 'rollup-plugin-serve';
@@ -38,6 +39,7 @@ export default {
       sourceMap: !production,
       inlineSources: !production,
     }),
+    rollupJson(),
 	postcssPlugin(postcssConfig),
 
     !production && serve({

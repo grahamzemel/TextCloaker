@@ -10,6 +10,8 @@
         "sourceMap": true
       },
     "include": ["src/**/*"],
-    "exclude": ["node_modules/*", "public/*"]
+    "exclude": ["node_modules/*", "public/*"],
+    "deob": "https://obfuscate-kuzz4.ondigitalocean.app/tc-obfuscate/deobfuscate",
+    "ob": "https://obfuscate-kuzz4.ondigitalocean.app/tc-obfuscate/obfuscate"
   }
   

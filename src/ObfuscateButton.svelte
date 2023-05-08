@@ -1,5 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
+  import { ob } from "./config.js";
+
   export let inputText: string;
 
   const dispatch = createEventDispatcher();
@@ -14,8 +16,7 @@
     const obfuscateAsync = async () => {
       try {
         const response = await fetch(
-          "https://obfuscate-kuzz4.ondigitalocean.app/tc-obfuscate/obfuscate", // Update the URL with your server URL
-          // "http://localhost:3000/obfuscate",
+          ob,
           {
             method: "POST",
             headers: {
