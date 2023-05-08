@@ -19,7 +19,7 @@
   <div class="content">
     <h3 class="title">TextCloaker</h3>
     <p class="subtitle">
-      Version 1.1.3 - By
+      Version 1.1.4 - By
       <a href="https://grahamzemel.com" target="_blank" class="text-blue-500"
         >Graham Zemel</a
       >
