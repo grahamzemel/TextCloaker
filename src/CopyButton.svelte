@@ -12,7 +12,7 @@
     }
   </script>
   
-  <button on:click={copyToClipboard} class="button button-copy">
+  <button style="background-color: #3b82f6;" on:click={copyToClipboard} class="button button-copy">
     {#if isCopied}
       Copied!
     {:else}
@@ -21,16 +21,5 @@
   </button>
   
   <style>
-    .button-copy {
-      padding: 1.5rem 3rem;
-      font-size: 1.2rem;
-      font-weight: bold;
-      background-color: #3b82f6; 
-      color: #ffffff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
   </style>
   

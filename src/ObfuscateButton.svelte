@@ -42,7 +42,7 @@
       setTimeout(() => {
         isSuccessful = true;
         isLoading = false;
-      }, 5000);
+      }, 2000);
     };
 
     setTimeout(obfuscateAsync, 2000);

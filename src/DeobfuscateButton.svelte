@@ -5,16 +5,17 @@
   const dispatch = createEventDispatcher();
 
   let isLoading = false;
-  let isSuccess = false;
+  let isSuccessful = false;
 
-  function deobfuscate() {
+  async function deobfuscate() {
+    isSuccessful = false;
     isLoading = true;
-    isSuccess = false;
-      const deobfuscateAsync = async () => {
+
+    const deobfuscateAsync = async () => {
       try {
         const response = await fetch(
-          // "https://obfuscate-kuzz4.ondigitalocean.app/tc-obfuscate/deobfuscate", // Update the URL with your server URL
-          "http://localhost:4000/deobfuscate",
+          "https://obfuscate-kuzz4.ondigitalocean.app/tc-obfuscate/deobfuscate", 
+          // "http://localhost:4000/deobfuscate",
           {
             method: "POST",
             headers: {
@@ -39,19 +40,19 @@
       }
 
       setTimeout(() => {
-        isSuccess = true;
+        isSuccessful = true;
         isLoading = false;
-      }, 5000);
+      }, 2000);
     };
-      
+
     setTimeout(deobfuscateAsync, 2000);
   }
 </script>
 
-<button on:click={deobfuscate} class="button deobfuscate-button">
+<button id="deobfuscate" on:click={deobfuscate} class="button deobfuscate-button">
   {#if isLoading}
     <div class="loader"></div>
-  {:else if isSuccess}
+  {:else if isSuccessful}
     Success!
   {:else}
     Un-Cloak!
@@ -59,7 +60,6 @@
 </button>
 
 <style>
-
   .loader {
     border: 5px solid #1e1e1e;
     border-top: 5px solid dimgray;
