@@ -18,6 +18,7 @@
 <div class="container">
   <div class="content">
     <h3 class="title">TextCloaker</h3>
+	<p class="subbertitle">Shield your AI-generated text from prying detectors with our cutting-edge cloaking tool!</p>
     <p class="subtitle">
       Version 1.1.4 - By
       <a href="https://grahamzemel.com" target="_blank" class="text-blue-500"

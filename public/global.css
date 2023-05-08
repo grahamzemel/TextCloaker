@@ -34,13 +34,17 @@ body {
 .title {
   font-size: 2.5rem;
   font-weight: bold;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .subtitle {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-bottom: 2rem;
   color: #4c87e6;
+}
+.subbertitle {
+	font-size: 1.1rem;
+	color: rgb(173, 173, 173);
 }
 
 .border-bottom {
