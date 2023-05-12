@@ -63,7 +63,7 @@
 
     <div class="privacy-policy">
       <p>All user data is erased on webpage exit. Contact <a href="https://grahamzemel.com/contact">Graham Zemel</a> to learn more.</p>
-      <a href="/privacy-policy">Privacy Policy</a>
+      <a href="/privacypolicy.html">Privacy Policy</a>
     </div>
   </div>
 </div>
