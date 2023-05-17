@@ -42,6 +42,8 @@
     <p class="note">
       Note: Your text should not look any different after you cloak/uncloak it.
     </p>
+    <!-- <p><a href="https://youtu.be/9D6mXNf4fWI" class="extension-promotion-description">Demo Video</a></p> -->
+    <button class="smallButton"><a href="https://youtu.be/9D6mXNf4fWI" style="color:white; font-size:medium; text-decoration:none;">Demo Video</a></button>
     <div class="border-bottom" />
     <h3 style="text-align: center;">Helpful Tips</h3>
     <ul class="helpful-tips">

@@ -78,6 +78,19 @@ body {
   margin-bottom: 1.5rem;
 }
 
+.smallButton {
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: dimgray;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 1.5rem;
+}
+
 .note {
   font-size: 0.9rem;
   margin-top: 1rem;
